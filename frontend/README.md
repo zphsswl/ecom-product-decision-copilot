@@ -21,5 +21,9 @@
 ## 本地启动
 
 ```bash
+*前端
 npm install
 npm run dev -- --hostname 0.0.0.0
+
+*后端
+uvicorn main:app --reload
