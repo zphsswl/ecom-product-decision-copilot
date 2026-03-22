@@ -1,129 +1,161 @@
-# Ecom Product Decision Copilot
+# Cross-border E-commerce AI Product Decision Copilot
 
-一个基于 FastMoss 导出数据的跨境电商 AI 选品决策助手，用于将商品数据从“看数据”升级为“做决策”。
+一个面向跨境电商卖家的 **AI 选品决策 Copilot**。  
+它不仅帮助用户看商品数据，还进一步结合 **地区政策 / 平台规则 / 合规风险**，生成更完整的综合决策建议。
+
+当前 MVP 重点聚焦 **马来西亚（MY）市场**，验证从：
+
+**商品搜索 → 商品分析 → 政策解读 → 综合报告**
+
+的完整闭环。
+
+---
 
 ## Project Overview
 
-FastMoss 可以帮助商家看到商品、达人、店铺和内容表现数据，但它本质上解决的是“数据查看”问题。
+在跨境电商选品过程中，商家通常会看到很多结构化数据，例如：
 
-本项目希望进一步解决一个更实际的业务问题：
+- 商品销量
+- 销售额
+- 达人带货表现
+- 店铺信息
+- 视频与直播数据
 
-**面对一批商品数据，商家如何快速判断这个品值不值得做、风险在哪、适合谁做、应该如何切入。**
+但“看数据”不等于“做决策”。
 
-因此，这个项目尝试构建一个真正可用的 **AI 选品决策 Copilot**，将结构化商品数据转化为：
+一个商品值不值得做，不仅取决于销量和热度，还要综合考虑：
 
-- 商品机会评分
-- 风险提示
-- 入场建议
-- 卖点建议
-- 测试策略建议
+- 这个品有没有持续机会
+- 适合什么类型的卖家进入
+- 应该从什么卖点切入
+- 存在哪些竞争与内容风险
+- 目标地区是否有政策 / 平台 / 标签 / 清关方面的限制
 
-## Project Value
+本项目希望解决的就是这个问题：
 
-这个项目的核心价值不在于“再做一个数据面板”，而在于：
+> 把商品数据、AI 商品分析和地区政策分析结合起来，帮助卖家更快做出跨境选品判断。
 
-1. **把数据转化为决策**
-   - 不只是展示 GMV、销量、增速等指标
-   - 而是进一步输出“推荐 / 谨慎测试 / 不推荐”的决策结果
+---
 
-2. **降低选品分析门槛**
-   - 帮助中小商家快速理解商品机会
-   - 减少纯人工看表、做判断的时间成本
+## Current MVP Scope
 
-3. **补足 FastMoss 的决策层能力**
-   - FastMoss 更偏数据洞察
-   - 本项目更偏“基于数据给出行动建议”
+当前版本主要验证以下能力：
 
-4. **形成 AI 产品化能力**
-   - 结合规则评分与 LLM 分析
-   - 输出更像真实业务助手的选品建议报告
+- 基于商品结构化数据进行搜索和详情展示
+- 基于 LLM 生成 AI 商品分析
+- 基于政策文档知识库做地区政策解读
+- 支持 AI 政策问答
+- 将商品分析和政策分析合并成综合选品报告
+
+当前重点地区：
+
+- **MY / 马来西亚**
+
+---
 
 ## Core Features
 
-当前 MVP 计划包含以下能力：
+### 1. 商品搜索与筛选
+用户可以按国家/地区、类目、商品状态和关键词搜索候选商品。
 
-- CSV 上传与商品数据导入
-- 商品列表页与基础指标展示
-- 规则驱动的机会评分
-- AI 生成商品分析结论
-- 风险识别与卖点建议
-- 商品级选品决策报告输出
+### 2. 商品详情页
+展示商品的核心经营指标，例如：
 
-## Target Users
+- 价格
+- 7天销量
+- 7天销售额
+- 总销量 / 总销售额
+- 达人数 / 达人出单率
+- 视频总数 / 直播总数
 
-本项目主要面向以下用户：
+### 3. AI 商品分析
+基于商品结构化数据生成：
 
-- 跨境电商卖家
-- TikTok Shop / 内容电商商家
-- 需要做选品分析的运营人员
-- 希望提升选品效率的中小团队
+- 一句话结论
+- 为什么能卖
+- 机会类型
+- 适合什么卖家
+- 建议切入卖点
+- 风险提示
+- 测试计划
+- 最终建议
 
-## MVP Scope
+### 4. 国家政策解读
+用户可以进入指定国家/地区的政策页面，查看：
 
-第一阶段只聚焦“单商品选品分析”，不做过大的系统扩展。
+- 平台规则重点
+- 税务 / 清关要点
+- 禁限售 / 高风险类目
+- AI 政策问答
 
-### Included
-- 基于 FastMoss 导出 CSV 的商品数据分析
-- 商品机会评分
-- AI 选品建议生成
-- 商品详情页与报告页
+### 5. 政策知识库 + RAG
+后端支持：
 
-### Not Included Yet
-- 实时 FastMoss API 对接
-- 自动爬虫
-- 多租户与权限系统
-- 大规模 BI 图表系统
-- 多模型路由与复杂 Agent 编排
+- 政策文档导入
+- 文档切分
+- embedding 入库
+- 向量检索
+- 检索增强生成（RAG）
+
+当前已接入部分 **MY 市场**的真实政策/平台规则文档，用于政策问答与综合报告生成。
+
+### 6. 综合选品报告
+将：
+
+- AI 选品分析
+- 地区政策 / 合规分析
+
+整合成一个更适合业务判断的综合报告页面。
+
+---
+
+## Product Flow
+
+### 用户路径
+
+1. 在首页搜索候选商品  
+2. 进入搜索结果页查看候选商品  
+3. 进入商品详情页查看核心经营指标  
+4. 生成 AI 商品分析  
+5. 查看目标地区政策解读  
+6. 最终生成综合选品报告  
+
+---
 
 ## Tech Stack
 
-Planned stack:
+### Frontend
+- Next.js
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Lucide Icons
 
-- **Frontend:** Next.js + Tailwind CSS + shadcn/ui
-- **Backend:** FastAPI
-- **Database:** Supabase / PostgreSQL
-- **AI Layer:** OpenAI API
-- **Data Processing:** pandas
+### Backend
+- FastAPI
+- Python
 
-## Workflow
+### Database / Storage
+- Supabase
 
-The planned workflow is:
+### AI / LLM
+- DeepSeek
+- Gemini
 
-1. Upload FastMoss-exported CSV
-2. Parse and clean structured product data
-3. Generate rule-based opportunity scores
-4. Call LLM for product analysis and decision suggestions
-5. Show results in product list / detail / report pages
+### Embedding / Retrieval
+- Gemini Embedding
+- policy_documents / policy_chunks
+- 向量检索 + 检索增强生成（RAG）
 
-## Current Status
+---
 
-This project is currently in early MVP building stage.
+## Repository Structure
 
-Current progress:
-- [x] Repository initialized
-- [x] Project direction defined
-- [ ] Frontend project setup
-- [ ] Backend API setup
-- [ ] Database schema setup
-- [ ] CSV upload pipeline
-- [ ] Opportunity scoring
-- [ ] AI analysis pipeline
-- [ ] Report generation
-
-## Future Plans
-
-- Add product comparison
-- Add comment/review summarization
-- Add prompt evaluation and bad case analysis
-- Deploy a demo version
-- Improve scoring strategy with more business signals
-
-## Author Note
-
-This project is built as an AI product / data product MVP focused on real cross-border e-commerce selection workflows.
-
-It is also intended as a portfolio project demonstrating:
-- AI product thinking
-- data-to-decision workflow design
-- MVP scoping ability
-- practical LLM application design
+```text
+.
+├─ frontend/         # Next.js 前端
+├─ backend/          # FastAPI 后端
+├─ docs/
+│  └─ images/        # 页面截图
+├─ README.md
+└─ .gitignore
