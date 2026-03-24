@@ -53,7 +53,11 @@
 
 ## Core Features
 ### 0. 全流程演示
-<img width="1800" height="7663" alt="ecom_copilot_flow_showcase_v3" src="https://github.com/user-attachments/assets/63c0d01a-53be-40ff-8ad1-7867c11c082e" />
+<a href="./images/ecom_copilot_flow_showcase_v3.png">
+  <img src="./images/ecom_copilot_flow_showcase_v3.png" alt="全流程演示" width="100%" />
+</a>
+
+<p>点击图片可查看高清大图。</p>
 
 ### 1. 商品搜索与筛选
 用户可以按国家/地区、类目、商品状态和关键词搜索候选商品。
